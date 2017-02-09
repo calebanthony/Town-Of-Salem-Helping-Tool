@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Town of salem ranked tracking tool.</title>
+	<title>ToS Assistant</title>
 	<link rel="stylesheet" href="salemStyle.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,164 +10,296 @@
 <body>
 <div class="container" id="app">
 	<div class='row'>
-		<div class='col-md-4'>
+		<div class='col-md-5'>
 			<h2>Suspects</h2>
-			<h5>Select the role:</h5>
-			<select id='roleSelect' class="form-control" v-on:change="sortBy" v-model="selected">
-			  <option v-for="option in options" v-bind:value="option.value">
-			    {{ option.text }}
-			  </option>
-			</select>
-
-			<a v-on:click='uncheck' href="#">Undo</a>
-
+            <p>Click a role to eliminate it. Click it again to bring it back.</p>
 			<table class="table table-hover table-striped">
 			    <thead>
 		    	<tr>
-		        <th>Role</th>
+		        <th>Role / Category</th>
+                <th>Claimed Role</th>
 		        <th>Suspected Player</th>
 
 		   		 </tr>
 		    	</thead>
 				<tr id='Jailor'>
 					<td><p>Jailor</p></td>
+					<td></td>
 					<td>
-						<input class='form-control' type='text'>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownInvestigative'>
 					<td><p><span class='townSpan'>Town</span> Investigative</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownInvestigative">
+        			  <option v-for="option in options | filterBy 'TownInvestigative'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownInvestigative2'>
 					<td><p><span class='townSpan'>Town</span> Investigative</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownInvestigative2">
+        			  <option v-for="option in options | filterBy 'TownInvestigative'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownSupport'>
 					<td><p><span class='townSpan'>Town</span> Support</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownSupport">
+        			  <option v-for="option in options | filterBy 'TownSupport'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownSupport2'>
 					<td><p><span class='townSpan'>Town</span> Support</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownSupport2">
+        			  <option v-for="option in options | filterBy 'TownSupport'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownProtective'>
 					<td><p><span class='townSpan'>Town</span> Protective</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownProtective">
+        			  <option v-for="option in options | filterBy 'TownProtective'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='TownKilling'>
 					<td><p><span class='townSpan'>Town</span> Killing</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="TownKilling">
+        			  <option v-for="option in options | filterBy 'TownKilling'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='RandomTown'>
 					<td><p>Random <span class='townSpan'>Town</span></p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="RandomTown">
+        			  <option v-for="option in options | filterBy 'Town'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='Godfather'>
 					<td><p>Godfather</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='Mafioso'>
 					<td><p>Mafioso</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='RandomMafia'>
 					<td><p>Random Mafia</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="RandomMafia">
+        			  <option v-for="option in options | filterBy 'RandomMafia'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='NeutralKilling'>
 					<td><p><span class='neutralSpan'>Neutral</span> Killing</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="NeutralKilling">
+        			  <option v-for="option in options | filterBy 'NeutralKilling'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='NeutralEvil'>
 					<td><p><span class='neutralSpan'>Neutral</span> Evil</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="NeutralEvil">
+        			  <option v-for="option in options | filterBy 'NeutralEvil'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='NeutralBenign'>
 					<td><p><span class='neutralSpan'>Neutral</span> Benign</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="NeutralBenign">
+                      <option v-for="option in options | filterBy 'NeutralBenign'">
+                        {{ option.text }}
+                      </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 				<tr id='Any'>
 					<td><p>Any</p></td>
-					<td>
-						<input class='form-control' type='text'>
+                    <td><select class="form-control" v-model="Any">
+        			  <option v-for="option in options | filterBy 'N' in 'unique'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
 			</table>
 		</div>
+        <div class="col-md-3">
+            <h2>Investigator</h2>
+            <p>What the investigator can see.</p>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Role Groups</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Spy"><span class="townSpan">Spy</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Blackmailer"><span class="mafiaSpan">Blackmailer</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Jailor"><span class="townSpan">Jailor</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Escort"><span class="townSpan">Escort</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Consort"><span class="mafiaSpan">Consort</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Transporter"><span class="townSpan">Transporter</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Investigator"><span class="townSpan">Investigator</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Consigliere"><span class="mafiaSpan">Consigliere</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Mayor"><span class="townSpan">Mayor</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Sheriff"><span class="townSpan">Sheriff</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Executioner"><span class="neutralSpan">Executioner</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Werewolf"><span class="werewolfSpan">Werewolf</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Vigilante"><span class="townSpan">Vigilante</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Mafioso"><span class="mafiaSpan">Mafioso</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Veteran"><span class="townSpan">Veteran</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Lookout"><span class="townSpan">Lookout</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Forger"><span class="mafiaSpan">Forger</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Amnesiac"><span class="amnesiacSpan">Amnesiac</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Doctor"><span class="townSpan">Doctor</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Disguiser"><span class="mafiaSpan">Disguiser</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Serial_Killer"><span class="skSpan">Serial Killer</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Bodyguard"><span class="townSpan">Bodyguard</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Godfather"><span class="mafiaSpan">Godfather</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Arsonist"><span class="arsonistSpan">Arsonist</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Medium"><span class="townSpan">Medium</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Janitor"><span class="mafiaSpan">Janitor</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Retributionist"><span class="townSpan">Retributionist</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Survivor"><span class="survivorSpan">Survivor</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Vampire_Hunter"><span class="mafiaSpan">Vampire Hunter</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Witch"><span class="witchSpan">Witch</span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="http://town-of-salem.wikia.com/wiki/Framer"><span class="mafiaSpan">Framer</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Vampire"><span class="neutralSpan">Vampire</span></a>,
+                            <a href="http://town-of-salem.wikia.com/wiki/Jester"><span class="jesterSpan">Jester</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 		<div class='col-md-4'>
-			<textarea class='myTextarea' placeholder="This is a sticky note you can type and edit."></textarea>
-			<hr/>
-			<h5>Suspects list</h5>
-			<div class='col-md-6'>
-			<textarea id="suspectsList" class='myTextarea' placeholder="This is a sticky note you can type and edit."></textarea>
-			</div>
-			<div class='col-md-6'>
-				<textarea id="suspectsList2" class='myTextarea' placeholder="This is a sticky note you can type and edit."></textarea>
-			</div>
-			<hr/>
-			<textarea class='myTextarea' placeholder="This is a sticky note you can type and edit."></textarea>
-		</div>
-		<div class='col-md-4'>
-
+            <h2>Role Guide</h2>
+            <p>Possible roles per slot.</p>
 			<table class="table">
-			   <tbody>
+			   <thead>
 			      <tr>
-			         <th scope="col">
-			            <p>Role name</p>
-			         </th>
-			         <th scope="col">
-			            <p>Possible roles</p>
-			         </th>
+			         <th>Role name</th>
+			         <th>Possible roles</th>
 			      </tr>
+              </thead>
+              <tbody>
 			      <tr>
-			         <td><a href="http://town-of-salem.wikia.com/wiki/Jailor" title="Jailor"><span style="color:#45BF00">Jailor</span></a></td>
+			         <td><a href="http://town-of-salem.wikia.com/wiki/Jailor" title="Jailor"><span class="townSpan">Jailor</span></a></td>
 			         <td><a href="http://town-of-salem.wikia.com/wiki/Unique" title="Unique" class="mw-redirect">Unique</a> Town role.</td>
 			      </tr>
 			      <tr>
-			         <td>2 <a href="http://town-of-salem.wikia.com/wiki/Town_Investigative" title="Town Investigative"><span style="color:#45BF00">Town</span> <span style="color:#49A9D0">Investigative</span></a></td>
+			         <td>2 <a href="http://town-of-salem.wikia.com/wiki/Town_Investigative" title="Town Investigative"><span class="townSpan">Town</span> <span style="color:#49A9D0">Investigative</span></a></td>
 			         <td>May be <a href="http://town-of-salem.wikia.com/wiki/Investigator" title="Investigator">Investigator</a>, <a href="http://town-of-salem.wikia.com/wiki/Lookout" title="Lookout">Lookout</a>, <a href="http://town-of-salem.wikia.com/wiki/Sheriff" title="Sheriff">Sheriff</a> or <a href="http://town-of-salem.wikia.com/wiki/Spy" title="Spy">Spy</a>.</td>
 			      </tr>
 			      <tr>
-			         <td>2 <a href="http://town-of-salem.wikia.com/wiki/Town_Support" title="Town Support"><span style="color:#45BF00">Town</span> <span style="color:#49A9D0">Support</span></a></td>
+			         <td>2 <a href="http://town-of-salem.wikia.com/wiki/Town_Support" title="Town Support"><span class="townSpan">Town</span> <span style="color:#49A9D0">Support</span></a></td>
 			         <td>May be <a href="http://town-of-salem.wikia.com/wiki/Escort" title="Escort">Escort</a>, <a href="http://town-of-salem.wikia.com/wiki/Mayor" title="Mayor">Mayor</a>, <a href="http://town-of-salem.wikia.com/wiki/Medium" title="Medium">Medium</a>, <a href="http://town-of-salem.wikia.com/wiki/Retributionist" title="Retributionist">Retributionist</a> or <a href="http://town-of-salem.wikia.com/wiki/Transporter" title="Transporter">Transporter</a>.</td>
 			      </tr>
 			      <tr>
-			         <td><a href="http://town-of-salem.wikia.com/wiki/Town_Protective" title="Town Protective"><span style="color:#45BF00">Town</span> <span style="color:#49A9D0">Protective</span></a></td>
+			         <td><a href="http://town-of-salem.wikia.com/wiki/Town_Protective" title="Town Protective"><span class="townSpan">Town</span> <span style="color:#49A9D0">Protective</span></a></td>
 			         <td>May be <a href="http://town-of-salem.wikia.com/wiki/Bodyguard" title="Bodyguard">Bodyguard</a> or <a href="http://town-of-salem.wikia.com/wiki/Doctor" title="Doctor">Doctor</a>.</td>
 			      </tr>
 			      <tr>
-			         <td><a href="http://town-of-salem.wikia.com/wiki/Town_Killing" title="Town Killing"><span style="color:#45BF00">Town</span> <span style="color:#49A9D0">Killing</span></a></td>
+			         <td><a href="http://town-of-salem.wikia.com/wiki/Town_Killing" title="Town Killing"><span class="townSpan">Town</span> <span style="color:#49A9D0">Killing</span></a></td>
 			         <td>May be <a href="http://town-of-salem.wikia.com/wiki/Vampire_Hunter" title="Vampire Hunter">Vampire Hunter</a>, <a href="http://town-of-salem.wikia.com/wiki/Veteran" title="Veteran">Veteran</a> or <a href="http://town-of-salem.wikia.com/wiki/Vigilante" title="Vigilante">Vigilante</a>.</td>
 			      </tr>
 			      <tr>
-			         <td><a href="http://town-of-salem.wikia.com/wiki/Town" title="Town"><span style="color:#49A9D0">Random</span> <span style="color:#45BF00">Town</span></a></td>
+			         <td><a href="http://town-of-salem.wikia.com/wiki/Town" title="Town"><span style="color:#49A9D0">Random</span> <span class="townSpan">Town</span></a></td>
 			         <td>May be any <a href="http://town-of-salem.wikia.com/wiki/Town" title="Town">Town</a> role, as long as <a href="http://town-of-salem.wikia.com/wiki/Unique" title="Unique" class="mw-redirect">Unique</a> roles do not occur more than once.</td>
 			      </tr>
 			      <tr>

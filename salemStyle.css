@@ -1,11 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
-
 #app{
-	padding-top:30px;
-}
-
-#roleSelect{
-	margin-bottom:20px;
+	padding-top:20px;
 }
 
 .townSpan , #Jailor > td{
@@ -16,7 +10,7 @@
 	color:#49A9D0;
 }
 
-#Godfather > td , #Mafioso > td , #RandomMafia > td{
+#Godfather > td , #Mafioso > td , #RandomMafia > td, .mafiaSpan {
 	color:red;
 }
 
@@ -24,35 +18,33 @@
 	color:gray;
 }
 
-.myTextarea  { 
-	display: block;
-	padding:25px 25px 40px;
-	margin:0 auto 20px auto;
-	width:100%;
-	height:250px;   
-	font: 20px 'Gloria Hallelujah', cursive; 
-	line-height:1.5;
-	border:0;
-	border-radius:3px;
-	background: -webkit-linear-gradient(#F9EFAF, #F7E98D);
-	background: -moz-linear-gradient(#F9EFAF, #F7E98D);
-	background: -o-linear-gradient(#F9EFAF, #F7E98D);
-	background: -ms-linear-gradient(#F9EFAF, #F7E98D);
-	background: linear-gradient(#F9EFAF, #F7E98D);
-	box-shadow:0 4px 6px rgba(0,0,0,0.1);
-	overflow:hidden;
-	transition:box-shadow 0.5s ease;
-	font-smoothing:subpixel-antialiased;
-	max-height:250px;
+.werewolfSpan {
+    color: #744A26;
 }
 
-#suspectsList , #suspectsList2{
-		background: linear-gradient(#5586C3, #95B1FF);
-		font: 12px 'Gloria Hallelujah', cursive; 
-
+.amnesiacSpan {
+    color: #4FF0E8;
 }
 
-textarea:hover { box-shadow:0 5px 8px rgba(0,0,0,0.15); }
+.skSpan {
+    color: #000080;
+}
+
+.arsonistSpan {
+    color: #EE7600;
+}
+
+.survivorSpan {
+    color: #C8C800;
+}
+
+.witchSpan {
+    color: #BF5FFF;
+}
+
+.jesterSpan {
+    color: #F49FD0;
+}
 
 table {
     border-collapse: collapse;

@@ -4,42 +4,42 @@ var vue = new Vue({
     selected: 'A',
     myStack: [],
     options: [
-      { text: 'Jailor', value: 'Jailor' },
-      { text: 'Investigator', value: 'TownInvestigative' },
-      { text: 'Lookout', value: 'TownInvestigative' },
-      { text: 'Sheriff', value: 'TownInvestigative' },
-      { text: 'Spy', value: 'TownInvestigative' },
-      { text: 'Escort', value: 'TownSupport' },
-      { text: 'Mayor', value: 'TownSupport' },
-      { text: 'Medium', value: 'TownSupport' },
-      { text: 'Retributionist', value: 'TownSupport' },
-      { text: 'Transporter', value: 'TownSupport' },
-      { text: 'Bodyguard', value: 'TownProtective' },
-      { text: 'Doctor', value: 'TownProtective' },
-      { text: 'Vampire Hunter', value: 'TownKilling' },
-      { text: 'Vigilante', value: 'TownKilling' },
-      { text: 'Veteran', value: 'TownKilling' },
-      { text: 'Godfather', value: 'Godfather' },
-      { text: 'Mafioso', value: 'Mafioso' },
-      { text: 'Blackmailer', value: 'RandomMafia' },
-      { text: 'Consigliere', value: 'RandomMafia' },
-      { text: 'Consort', value: 'RandomMafia' },
-      { text: 'Disguiser', value: 'RandomMafia' },
-      { text: 'Forger', value: 'RandomMafia' },
-      { text: 'Framer', value: 'RandomMafia' },
-      { text: 'Janitor', value: 'RandomMafia' },
-      { text: 'Arsonist', value: 'NeutralKilling' },
-      { text: 'Serial Killer', value: 'NeutralKilling' },
-      { text: 'Werewolf', value: 'NeutralKilling' },
-      { text: 'Executioner', value: 'NeutralEvil' },
-      { text: 'Jester', value: 'NeutralEvil' },
-      { text: 'Witch', value: 'NeutralEvil' },
-      { text: 'Amnesiac', value: 'NeutralBenign' },
-      { text: 'Survivor', value: 'NeutralBenign' },
+      { text: 'Jailor', value: 'Jailor', unique: 'Y' },
+      { text: 'Investigator', value: 'TownInvestigative', unique: 'N' },
+      { text: 'Lookout', value: 'TownInvestigative', unique: 'N' },
+      { text: 'Sheriff', value: 'TownInvestigative', unique: 'N' },
+      { text: 'Spy', value: 'TownInvestigative', unique: 'N' },
+      { text: 'Escort', value: 'TownSupport', unique: 'N' },
+      { text: 'Mayor', value: 'TownSupport', unique: 'Y' },
+      { text: 'Medium', value: 'TownSupport', unique: 'N' },
+      { text: 'Retributionist', value: 'TownSupport', unique: 'Y' },
+      { text: 'Transporter', value: 'TownSupport', unique: 'N' },
+      { text: 'Bodyguard', value: 'TownProtective', unique: 'N' },
+      { text: 'Doctor', value: 'TownProtective', unique: 'N' },
+      { text: 'Vampire Hunter', value: 'TownKilling', unique: 'N' },
+      { text: 'Vigilante', value: 'TownKilling', unique: 'N' },
+      { text: 'Veteran', value: 'TownKilling', unique: 'Y' },
+      { text: 'Godfather', value: 'Godfather', unique: 'Y' },
+      { text: 'Mafioso', value: 'Mafioso', unique: 'Y' },
+      { text: 'Blackmailer', value: 'RandomMafia', unique: 'N' },
+      { text: 'Consigliere', value: 'RandomMafia', unique: 'N' },
+      { text: 'Consort', value: 'RandomMafia', unique: 'N' },
+      { text: 'Disguiser', value: 'RandomMafia', unique: 'N' },
+      { text: 'Forger', value: 'RandomMafia', unique: 'N' },
+      { text: 'Framer', value: 'RandomMafia', unique: 'N' },
+      { text: 'Janitor', value: 'RandomMafia', unique: 'N' },
+      { text: 'Arsonist', value: 'NeutralKilling', unique: 'N' },
+      { text: 'Serial Killer', value: 'NeutralKilling', unique: 'N' },
+      { text: 'Werewolf', value: 'NeutralKilling', unique: 'Y' },
+      { text: 'Executioner', value: 'NeutralEvil', unique: 'N' },
+      { text: 'Jester', value: 'NeutralEvil', unique: 'N' },
+      { text: 'Witch', value: 'NeutralEvil', unique: 'N' },
+      { text: 'Amnesiac', value: 'NeutralBenign', unique: 'N' },
+      { text: 'Survivor', value: 'NeutralBenign', unique: 'N' },
     ]
   },
   methods: {
-  	sortBy : function(e){
+      sortBy : function(e) {
   		value = e.target.selectedOptions[0].value;
   		switch (value) {
   			case "Jailor":
@@ -89,7 +89,7 @@ var vue = new Vue({
   					this.check($('#Any'));
   				else
   					alert('Someone\'s lying');
-  				break;  				
+  				break;
   			case "Godfather":
   				this.check($('#Godfather'));
   			break;
@@ -138,38 +138,21 @@ var vue = new Vue({
   	},
 
   	check : function (elem){
-  		vue.myStack.push(elem.closest('tr')[0]);
-
-   		(elem).closest('tr').children('td')
-        .wrapInner('<div />')
-        .children()
-        .slideUp(function() { $(this).closest('tr').hide(); });
+   		(elem).fadeTo('slow', 0.33)
   	},
 
   	uncheck : function(elem){
-  		popped = $(vue.myStack.pop()).show().find('*').slideDown(function(){
-  			$(this).show();
-  		});
-  		
-  	}
+        console.log($(elem).closest('tr'))
+	    $(elem).fadeTo('slow', 1.0);
+  	},
 
   }
 })
 
-$(document).ready(function(){
-
-for(var i = 0; i < 8; i++){
-	$('#suspectsList').append(i+'-\n');
-	$('#suspectsList2').append((i+8)+'-\n');
-}
-
-});
-
 $('tr td p').on('click',function(){
-	console.log($(this).parentElement);
-	if($(this).css('text-decoration') == 'line-through')
-		vue.$options.methods.uncheck($(this));
+    let elem = $(this).closest('tr')
+	if($(elem).css('opacity') == 0.33)
+		vue.$options.methods.uncheck($(elem));
 	else
-		vue.$options.methods.check($(this));
-
+		vue.$options.methods.check($(elem));
 })
