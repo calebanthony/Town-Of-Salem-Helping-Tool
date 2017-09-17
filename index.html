@@ -51,28 +51,6 @@
 						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
-				<tr id='TownSupport'>
-					<td><p><span class='townSpan'>Town</span> Support</p></td>
-                    <td><select class="form-control" v-model="TownSupport">
-        			  <option v-for="option in options | filterBy 'TownSupport'">
-        			    {{ option.text }}
-        			  </option>
-                    </select></td>
-                    <td>
-						<input class='form-control' type='text' placeholder='Name'>
-					</td>
-				</tr>
-				<tr id='TownSupport2'>
-					<td><p><span class='townSpan'>Town</span> Support</p></td>
-                    <td><select class="form-control" v-model="TownSupport2">
-        			  <option v-for="option in options | filterBy 'TownSupport'">
-        			    {{ option.text }}
-        			  </option>
-                    </select></td>
-                    <td>
-						<input class='form-control' type='text' placeholder='Name'>
-					</td>
-				</tr>
 				<tr id='TownProtective'>
 					<td><p><span class='townSpan'>Town</span> Protective</p></td>
                     <td><select class="form-control" v-model="TownProtective">
@@ -95,9 +73,42 @@
 						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
+        <tr id='TownSupport'>
+          <td><p><span class='townSpan'>Town</span> Support</p></td>
+          <td><select class="form-control" v-model="TownSupport">
+            <option v-for="option in options | filterBy 'TownSupport'">
+              {{ option.text }}
+            </option>
+          </select></td>
+          <td>
+            <input class='form-control' type='text' placeholder='Name'>
+          </td>
+        </tr>
 				<tr id='RandomTown'>
 					<td><p>Random <span class='townSpan'>Town</span></p></td>
                     <td><select class="form-control" v-model="RandomTown">
+        			  <option v-for="option in options | filterBy 'Town'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
+					</td>
+				</tr>
+				<tr id='RandomTown2'>
+					<td><p>Random <span class='townSpan'>Town</span></p></td>
+                    <td><select class="form-control" v-model="RandomTown2">
+        			  <option v-for="option in options | filterBy 'Town'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
+					</td>
+				</tr>
+				<tr id='RandomTown3'>
+					<td><p>Random <span class='townSpan'>Town</span></p></td>
+                    <td><select class="form-control" v-model="RandomTown3">
         			  <option v-for="option in options | filterBy 'Town'">
         			    {{ option.text }}
         			  </option>
@@ -131,6 +142,17 @@
 						<input class='form-control' type='text' placeholder='Name'>
 					</td>
 				</tr>
+				<tr id='RandomMafia2'>
+					<td><p>Random Mafia</p></td>
+                    <td><select class="form-control" v-model="RandomMafia2">
+        			  <option v-for="option in options | filterBy 'RandomMafia'">
+        			    {{ option.text }}
+        			  </option>
+                    </select></td>
+                    <td>
+						<input class='form-control' type='text' placeholder='Name'>
+					</td>
+				</tr>
 				<tr id='NeutralKilling'>
 					<td><p><span class='neutralSpan'>Neutral</span> Killing</p></td>
                     <td><select class="form-control" v-model="NeutralKilling">
@@ -146,28 +168,6 @@
 					<td><p><span class='neutralSpan'>Neutral</span> Evil</p></td>
                     <td><select class="form-control" v-model="NeutralEvil">
         			  <option v-for="option in options | filterBy 'NeutralEvil'">
-        			    {{ option.text }}
-        			  </option>
-                    </select></td>
-                    <td>
-						<input class='form-control' type='text' placeholder='Name'>
-					</td>
-				</tr>
-				<tr id='NeutralBenign'>
-					<td><p><span class='neutralSpan'>Neutral</span> Benign</p></td>
-                    <td><select class="form-control" v-model="NeutralBenign">
-                      <option v-for="option in options | filterBy 'NeutralBenign'">
-                        {{ option.text }}
-                      </option>
-                    </select></td>
-                    <td>
-						<input class='form-control' type='text' placeholder='Name'>
-					</td>
-				</tr>
-				<tr id='Any'>
-					<td><p>Any</p></td>
-                    <td><select class="form-control" v-model="Any">
-        			  <option v-for="option in options | filterBy 'N' in 'unique'">
         			    {{ option.text }}
         			  </option>
                     </select></td>

@@ -16,7 +16,7 @@ var vue = new Vue({
       { text: 'Transporter', value: 'TownSupport', unique: 'N' },
       { text: 'Bodyguard', value: 'TownProtective', unique: 'N' },
       { text: 'Doctor', value: 'TownProtective', unique: 'N' },
-      { text: 'Vampire Hunter', value: 'TownKilling', unique: 'N' },
+      // { text: 'Vampire Hunter', value: 'TownKilling', unique: 'N' },
       { text: 'Vigilante', value: 'TownKilling', unique: 'N' },
       { text: 'Veteran', value: 'TownKilling', unique: 'Y' },
       { text: 'Godfather', value: 'Godfather', unique: 'Y' },
@@ -39,100 +39,6 @@ var vue = new Vue({
     ]
   },
   methods: {
-      sortBy : function(e) {
-  		value = e.target.selectedOptions[0].value;
-  		switch (value) {
-  			case "Jailor":
-  				this.check($('#Jailor'));
-  			break;
-  			case "TownInvestigative":
-  				if(!this.isChecked($('#TownInvestigative')))
-  					this.check($('#TownInvestigative'));
-  				else if(!this.isChecked($('#TownInvestigative2')))
-  					this.check($('#TownInvestigative2'));
-  				else if(!this.isChecked($('#RandomTown')))
-  					this.check($('#RandomTown'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			case "TownSupport":
-  				if(!this.isChecked($('#TownSupport')))
-  					this.check($('#TownSupport'));
-  				else if(!this.isChecked($('#TownSupport2')))
-  					this.check($('#TownSupport2'));
-  				else if(!this.isChecked($('#RandomTown')))
-  					this.check($('#RandomTown'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			break;
-  			case "TownKilling":
-				if(!this.isChecked($('#TownKilling')))
-  					this.check($('#TownKilling'));
-  				else if(!this.isChecked($('#RandomTown')))
-  					this.check($('#RandomTown'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			case "TownProtective":
-				if(!this.isChecked($('#TownProtective')))
-  					this.check($('#TownProtective'));
-  				else if(!this.isChecked($('#RandomTown')))
-  					this.check($('#RandomTown'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			case "Godfather":
-  				this.check($('#Godfather'));
-  			break;
-  			case "Mafioso":
-  				this.check($('#Mafioso'));
-  			break;
-  			case "RandomMafia":
-  				this.check($('#RandomMafia'));
-  			break;
-  			case "NeutralKilling":
-  				if(!this.isChecked($('#NeutralKilling')))
-  					this.check($('#NeutralKilling'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			break;
-  			case "NeutralEvil":
-  				if(!this.isChecked($('#NeutralEvil')))
-  					this.check($('#NeutralEvil'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			break;
-  			case "NeutralBenign":
-  				if(!this.isChecked($('#NeutralBenign')))
-  					this.check($('#NeutralBenign'));
-  				else if(!this.isChecked($('#Any')))
-  					this.check($('#Any'));
-  				else
-  					alert('Someone\'s lying');
-  				break;
-  			break;
-  			break;
-  			default:
-  				// statements_def
-  				break;
-  		}
-  	},
-
   	isChecked : function(elem){
       return ! (elem).is(':visible');
   	},
@@ -142,7 +48,6 @@ var vue = new Vue({
   	},
 
   	uncheck : function(elem){
-        console.log($(elem).closest('tr'))
 	    $(elem).fadeTo('slow', 1.0);
   	},
 
@@ -150,7 +55,7 @@ var vue = new Vue({
 })
 
 $('tr td p').on('click',function(){
-    let elem = $(this).closest('tr')
+  let elem = $(this).closest('tr')
 	if($(elem).css('opacity') == 0.33)
 		vue.$options.methods.uncheck($(elem));
 	else
