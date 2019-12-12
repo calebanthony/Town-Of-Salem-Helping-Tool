@@ -10,7 +10,7 @@
 <body>
 <div class="container" id="app">
 	<div class='row'>
-		<div class='col-md-5'>
+		<div class='col-md-6'>
 			<h2>Suspects</h2>
             <p>Click a role to eliminate it. Click it again to bring it back.</p>
 			<table class="table table-hover table-striped">
@@ -19,6 +19,7 @@
 		        <th>Role / Category</th>
                 <th>Claimed Role</th>
 		        <th>Suspected Player</th>
+		        <th><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-double" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-check-double fa-w-16 fa-3x"><path fill="currentColor" d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34zm-324.3 106c6.2 6.3 16.4 6.3 22.6 0l208-208.2c6.2-6.3 6.2-16.4 0-22.6L366.1 4.7c-6.2-6.3-16.4-6.3-22.6 0L192 156.2l-55.4-55.5c-6.2-6.3-16.4-6.3-22.6 0L68.7 146c-6.2 6.3-6.2 16.4 0 22.6l112 112.2z" class=""></path></svg></th>
 
 		   		 </tr>
 		    	</thead>
@@ -27,7 +28,10 @@
 					<td></td>
 					<td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='TownInvestigative'>
 					<td><p><span class='townSpan'>Town</span> Investigative</p></td>
@@ -38,7 +42,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='TownInvestigative2'>
 					<td><p><span class='townSpan'>Town</span> Investigative</p></td>
@@ -49,7 +56,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='TownProtective'>
 					<td><p><span class='townSpan'>Town</span> Protective</p></td>
@@ -60,7 +70,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='TownKilling'>
 					<td><p><span class='townSpan'>Town</span> Killing</p></td>
@@ -71,7 +84,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
         <tr id='TownSupport'>
           <td><p><span class='townSpan'>Town</span> Support</p></td>
@@ -83,6 +99,9 @@
           <td>
             <input class='form-control' type='text' placeholder='Name'>
           </td>
+          <td>
+              <input type='checkbox'>
+          </td>
         </tr>
 				<tr id='RandomTown'>
 					<td><p>Random <span class='townSpan'>Town</span></p></td>
@@ -93,7 +112,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='RandomTown2'>
 					<td><p>Random <span class='townSpan'>Town</span></p></td>
@@ -104,7 +126,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='RandomTown3'>
 					<td><p>Random <span class='townSpan'>Town</span></p></td>
@@ -115,21 +140,30 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='Godfather'>
 					<td><p>Godfather</p></td>
                     <td></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='Mafioso'>
 					<td><p>Mafioso</p></td>
                     <td></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='RandomMafia'>
 					<td><p>Random Mafia</p></td>
@@ -140,7 +174,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='RandomMafia2'>
 					<td><p>Random Mafia</p></td>
@@ -151,7 +188,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='NeutralKilling'>
 					<td><p><span class='neutralSpan'>Neutral</span> Killing</p></td>
@@ -162,7 +202,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 				<tr id='NeutralEvil'>
 					<td><p><span class='neutralSpan'>Neutral</span> Evil</p></td>
@@ -173,7 +216,10 @@
                     </select></td>
                     <td>
 						<input class='form-control' type='text' placeholder='Name'>
-					</td>
+                    </td>
+                    <td>
+                        <input type='checkbox'>
+                    </td>
 				</tr>
 			</table>
 		</div>
@@ -267,7 +313,7 @@
                 </tbody>
             </table>
         </div>
-		<div class='col-md-4'>
+		<div class='col-md-3'>
             <h2>Role Guide</h2>
             <p>Possible roles per slot.</p>
 			<table class="table">
